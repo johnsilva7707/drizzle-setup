@@ -1,8 +1,39 @@
 {
 	"name": "drizzle-setup",
 	"version": "0.0.1",
-	"private": true,
-	"description": "A simple example library built by tsdown",
+	"private": false,
+	"description": "A powerful CLI tool to automatically scaffold and configure database setup using Drizzle ORM for PostgreSQL,SQLite,MySQL and More.",
+	"keywords": [
+		"drizzle",
+		"drizzle-orm",
+		"PostgreSQL",
+		"Neon",
+		"Vercel Postgres",
+		"Supabase",
+		"Xata",
+		"PGLite",
+		"Nile",
+		"Bun SQL",
+		"Gel",
+		"MySQL",
+		"PlanetScale",
+		"TiDB",
+		"SingleStore",
+		"SQLite",
+		"Turso",
+		"Cloudflare D1",
+		"Bun SQLite",
+		"Cloudflare Durable Objects",
+		"Native SQLite",
+		"Expo SQLite",
+		"OP SQLite"
+	],
+	"author": "devgauravjatt",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/devgauravjatt/drizzle-setup"
+	},
+	"license": "MIT",
 	"type": "module",
 	"files": [
 		"dist"

@@ -21,9 +21,7 @@ Install globally via your preferred package manager:
 ```bash
 npm install -g drizzle-setup
 # or
-pnpm add -g drizzle-setup
-# or
-bun add -g drizzle-setup
+npx drizzle-setup
 ```
 
 ---
