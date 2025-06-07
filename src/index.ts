@@ -84,7 +84,7 @@ try {
 	}
 
 	await fs.copy(templatePath, targetPath)
-	console.log(`✅ Template copied to ${dbPath.toString()}`)
+	// console.log(`  📁 Template copied to ${dbPath.toString()}`)
 } catch (error) {
 	console.error('🚨 Error copying template:', error)
 	process.exit(1)
@@ -96,14 +96,14 @@ try {
 		drizzle_configPath,
 		dbPath.toString()
 	)
-	console.log(`✅ drizzle.config.ts added!`)
+	// console.log(`  🛠 drizzle.config.ts added!`)
 } catch (error) {
 	console.error('🚨 Error copying and modifying drizzle.config.ts:', error)
 }
 
 try {
 	await updateEnvFile(envVar)
-	console.log(`✅ .env file updated with ${envVar} at top`)
+	// console.log(`⚙ .env file updated with ${envVar} at top`)
 } catch (error) {
 	console.error('🚨 Error updating .env file:', error)
 }
@@ -117,7 +117,7 @@ const updateScripts = await confirm({
 if (updateScripts === true) {
 	try {
 		await UpdateScripts(scriptJsonPath)
-		console.log('✅ package.json scripts updated!')
+		// console.log('  📑 package.json scripts updated!')
 	} catch (error) {
 		console.error('🚨 Error updating package.json scripts:', error)
 	}
@@ -145,7 +145,12 @@ s.start(
 
 try {
 	await pkgMangerRun(s, pkg_manger, dbConfig)
-	s.stop(`✅ Packages installed with ${pkg_manger.toString()}`)
+	s.stop(
+		`\n📁 Template copied to ${dbPath.toString()}
+		\n🛠 drizzle.config.ts added!
+		\n📑 package.json scripts updated!
+		\n✅ Drizzle Setup completed!`
+	)
 } catch (err) {
 	s.stop('🚨 Failed to install packages')
 	console.error(err)
