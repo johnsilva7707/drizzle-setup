@@ -3,14 +3,18 @@ const PostgresqlDatabasesConfigs = [
 		name: 'PostgreSQL',
 		path: 'postgres_sql',
 		template_path: 'templates/postgres/postgres',
-		env_var: 'DATABASE_URL',
+		env_var: {
+			DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/postgres',
+		},
 		packages: ['drizzle-orm', 'mysql2', 'dotenv', 'drizzle-kit'],
 	},
 	{
 		name: 'Neon',
 		path: 'neon',
 		template_path: 'templates/postgres/neon',
-		env_var: 'DATABASE_URL',
+		env_var: {
+			DATABASE_URL: '',
+		},
 		packages: [
 			'drizzle-orm',
 			'@neondatabase/serverless',

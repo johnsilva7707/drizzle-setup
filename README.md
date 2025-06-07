@@ -49,7 +49,7 @@ You'll be guided through:
 ## 🧪 Supported Databases
 
 - PostgreSQL - Default, Neon
-- SQLite - Default, Bun SQLite
+- SQLite - Default, Turso, Bun SQLite
 
 Each database type comes with its own pre-configured templates and `.env` variables.
 

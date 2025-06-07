@@ -102,7 +102,7 @@ try {
 }
 
 try {
-	await updateEnvFile(envVar)
+	await updateEnvFile(envVar as Record<string, string>)
 	// console.log(`⚙ .env file updated with ${envVar} at top`)
 } catch (error) {
 	console.error('🚨 Error updating .env file:', error)
@@ -147,7 +147,8 @@ try {
 	await pkgMangerRun(s, pkg_manger, dbConfig)
 	s.stop(
 		`\n📁 Template copied to ${dbPath.toString()}
-		\n🛠 drizzle.config.ts added!
+		\n⚙  .env file vars at on top updated!
+		\n🛠  drizzle.config.ts added!
 		\n📑 package.json scripts updated!
 		\n✅ Drizzle Setup completed!`
 	)
