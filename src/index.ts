@@ -102,7 +102,7 @@ try {
 }
 
 try {
-	await updateEnvFile(envVar as Record<string, string>)
+	await updateEnvFile(envVar as unknown as Record<string, string>)
 	// console.log(`⚙ .env file updated with ${envVar} at top`)
 } catch (error) {
 	console.error('🚨 Error updating .env file:', error)
@@ -144,8 +144,9 @@ s.start(
 )
 
 try {
-	await pkgMangerRun(s, pkg_manger, dbConfig)
-	s.stop(
+	await pkgMangerRun(pkg_manger, dbConfig)
+	s.stop?.('All packages installed successfully', 0)
+	console.log(
 		`\n📁 Template copied to ${dbPath.toString()}
 		\n⚙  .env file vars at on top updated!
 		\n🛠  drizzle.config.ts added!
@@ -154,6 +155,8 @@ try {
 	)
 } catch (err) {
 	s.stop('🚨 Failed to install packages')
-	console.error(err)
+	console.error(
+		'😞 Installation failed. Please check your internet connection and \nverify that your package manager is installed and functioning correctly.'
+	)
 	process.exit(1)
 }

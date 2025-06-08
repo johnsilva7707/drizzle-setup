@@ -6,7 +6,7 @@ const PostgresqlDatabasesConfigs = [
 		env_var: {
 			DATABASE_URL: 'postgres://postgres:postgres@localhost:5432/postgres',
 		},
-		packages: ['drizzle-orm', 'mysql2', 'dotenv', 'drizzle-kit'],
+		packages: ['drizzle-orm', 'pg', 'dotenv', '@types/pg -D', 'drizzle-kit -D'],
 	},
 	{
 		name: 'Neon',
@@ -19,8 +19,17 @@ const PostgresqlDatabasesConfigs = [
 			'drizzle-orm',
 			'@neondatabase/serverless',
 			'dotenv',
-			'drizzle-kit',
+			'drizzle-kit -D',
 		],
+	},
+	{
+		name: 'Vercel Postgres',
+		path: 'vercel_postgres',
+		template_path: 'templates/postgres/vercel-postgres',
+		env_var: {
+			POSTGRES_URL: '',
+		},
+		packages: ['drizzle-orm', '@vercel/postgres', 'dotenv', 'drizzle-kit -D'],
 	},
 ]
 

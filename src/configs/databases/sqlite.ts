@@ -6,7 +6,7 @@ const SQLiteDatabasesConfigs = [
 		env_var: {
 			DB_FILE_NAME: 'file:local.db',
 		},
-		packages: ['drizzle-orm', '@libsql/client', 'dotenv', 'drizzle-kit'],
+		packages: ['drizzle-orm', '@libsql/client', 'dotenv', 'drizzle-kit -D'],
 	},
 	{
 		name: 'Turso',
@@ -16,7 +16,7 @@ const SQLiteDatabasesConfigs = [
 			TURSO_DATABASE_URL: '',
 			TURSO_AUTH_TOKEN: '',
 		},
-		packages: ['drizzle-orm', '@libsql/client', 'dotenv', 'drizzle-kit'],
+		packages: ['drizzle-orm', '@libsql/client', 'dotenv', 'drizzle-kit -D'],
 	},
 	{
 		name: 'Bun SQLite',
@@ -25,7 +25,7 @@ const SQLiteDatabasesConfigs = [
 		env_var: {
 			DB_FILE_NAME: 'mydb.sqlite',
 		},
-		packages: ['drizzle-orm', '@types/bun', 'dotenv', 'drizzle-kit'],
+		packages: ['drizzle-orm', '@types/bun -D', 'dotenv', 'drizzle-kit -D'],
 	},
 ]
 

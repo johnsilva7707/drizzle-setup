@@ -1,27 +1,35 @@
 import { execa } from 'execa'
 
 async function pkgMangerRun(
-	sp: {
-		start: (msg?: string) => void
-		stop: (msg?: string, code?: number) => void
-		message: (msg?: string) => void
-	},
 	pkg_manger: symbol | 'bun' | 'yarn' | 'pnpm' | 'npm',
 	dbConfig: {
 		packages: string[]
 	}
 ) {
-	// Create args based on package manager
-	const installArgs =
-		pkg_manger.toString() === 'bun'
-			? ['add', ...dbConfig.packages]
-			: pkg_manger.toString() === 'yarn'
-			? ['add', ...dbConfig.packages]
-			: ['install', ...dbConfig.packages]
+	for (const rawPkg of dbConfig.packages) {
+		const parts = rawPkg.trim().split(' ')
+		const pkg = parts[0]
+		const isDev = parts.includes('-D')
 
-	await execa(pkg_manger.toString(), installArgs, {
-		stdio: 'ignore', // Show progress
-	})
+		const args =
+			pkg_manger === 'bun'
+				? isDev
+					? ['add', '-D', pkg]
+					: ['add', pkg]
+				: pkg_manger === 'yarn'
+				? isDev
+					? ['add', '--dev', pkg]
+					: ['add', pkg]
+				: isDev
+				? ['install', pkg, '--save-dev']
+				: ['install', pkg]
+
+		try {
+			await execa(pkg_manger.toString(), args, { stdio: 'ignore' })
+		} catch (err) {
+			throw err
+		}
+	}
 }
 
 export default pkgMangerRun
