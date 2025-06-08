@@ -1,6 +1,6 @@
 {
 	"name": "drizzle-setup",
-	"version": "0.0.2",
+	"version": "0.0.5",
 	"private": false,
 	"description": "A powerful CLI tool to automatically scaffold and configure database setup using Drizzle ORM for PostgreSQL,SQLite,MySQL and More.",
 	"keywords": [
